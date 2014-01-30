@@ -14,6 +14,9 @@ gem 'haml-rails'
 gem 'haml_coffee_assets'
 gem 'execjs'
 
+gem 'rabl'
+gem 'oj'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
