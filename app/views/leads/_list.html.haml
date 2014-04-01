@@ -1,0 +1,14 @@
+- leads.each do |lead|
+  %tr
+    %td
+      = lead.id.to_s
+    %td
+      = lead.name
+    %td
+      = lead.phone
+    %td
+      = lead.email
+    %td
+      Новый
+    %td
+      = link_to 'просмотреть', lead_path(lead)
