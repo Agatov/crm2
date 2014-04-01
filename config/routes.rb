@@ -1,5 +1,13 @@
 Crm::Application.routes.draw do
- root 'application#index'
+ root 'leads#index'
 
-  resources :leads, except: [:new, :edit]
+  resources :leads do
+    resources :comments
+  end
+
+  resources :users
+  resources :accounts
+  resources :landings
+  resources :statuses
 end
+

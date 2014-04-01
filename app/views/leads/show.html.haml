@@ -1,0 +1,5 @@
+%h1
+  = @lead.name
+
+= link_to 'Редактировать', edit_lead_path(@lead)
+= link_to 'Удалить', lead_path(@lead), method: :delete, confirm: 'Вы уверены?'
