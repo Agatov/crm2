@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     Landing.first
   end
 
-  def current_accoun
+  def current_account
     Account.first
   end
 

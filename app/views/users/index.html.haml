@@ -1,0 +1,22 @@
+%h1
+  Список пользователей аккаунта
+
+
+%table.table
+  %thead
+    %tr
+      %th Имя
+      %th email
+      %th роль
+      %th #
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td
+          = user.name
+        %td
+          = user.email
+        %td
+          = user.role
+        %td
+          = link_to 'редактировать', edit_user_path(user)
