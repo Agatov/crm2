@@ -1,0 +1,12 @@
+%h1
+  Список статусов
+
+%table.table
+  %tbody
+    - @statuses.each do |status|
+      %tr
+        %td
+          = status.name
+        %td
+          = link_to 'изменить', edit_status_path(status)
+          = link_to 'удалить', status_path(status), method: :delete, confirm: 'Удалить статус?'

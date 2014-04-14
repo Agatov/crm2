@@ -3,3 +3,8 @@
 
 = link_to 'Редактировать', edit_lead_path(@lead)
 = link_to 'Удалить', lead_path(@lead), method: :delete, confirm: 'Вы уверены?'
+
+
+= simple_form_for @lead, url: lead_path(@lead) do |f|
+  = f.association :status
+  = f.submit 'Изменить'

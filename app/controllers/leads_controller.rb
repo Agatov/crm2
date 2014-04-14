@@ -5,7 +5,11 @@ class LeadsController < ApplicationController
 
   # GET /leads
   def index
-    @leads = Lead.order(:id)
+    if params[:status_id]
+      @leads = current_landing.leads.with_status params[:status_id]
+    else
+      @leads = Lead.order(:id)
+    end
   end
 
   def show
@@ -49,7 +53,7 @@ class LeadsController < ApplicationController
   end
 
   def lead_params
-    params.require(:lead).permit(:name, :phone, :email)
+    params.require(:lead).permit(:name, :phone, :email, :status_id)
   end
 
 end

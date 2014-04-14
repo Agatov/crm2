@@ -9,6 +9,9 @@
     %td
       = lead.email
     %td
-      Новый
+      - if lead.status_id
+        = lead.status.name
+      - else
+        Новый
     %td
       = link_to 'просмотреть', lead_path(lead)
