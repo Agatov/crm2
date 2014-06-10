@@ -4,4 +4,13 @@ class User < ActiveRecord::Base
   has_many :leads
 
   as_enum :role, admin: 0, manager: 1
+
+
+
+  def can_be_authorized?(password)
+    return true if password == self.password
+    false
+  end
+
+
 end

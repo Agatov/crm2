@@ -1,0 +1,6 @@
+.topbar
+  .wrapper
+    .right
+      - if user_signed_in?
+        = current_user.name
+        = link_to 'выйти', logout_authentications_path

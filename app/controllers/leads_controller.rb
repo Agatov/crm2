@@ -1,7 +1,8 @@
 class LeadsController < ApplicationController
 
-  respond_to :json
+  before_filter :authenticate_user!
   before_filter :find_lead, only: [:edit, :update, :destroy]
+
 
   # GET /leads
   def index

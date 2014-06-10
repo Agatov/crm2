@@ -9,5 +9,9 @@ Crm::Application.routes.draw do
   resources :accounts
   resources :landings
   resources :statuses
+
+  resources :authentications, only: [:index, :create] do
+    get :logout, on: :collection
+  end
 end
 

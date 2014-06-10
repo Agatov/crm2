@@ -1,10 +1,79 @@
-%h1
-  = @lead.name
+.lead
+  .title
+    .name
+      = @lead.name
 
-= link_to 'Редактировать', edit_lead_path(@lead)
-= link_to 'Удалить', lead_path(@lead), method: :delete, confirm: 'Вы уверены?'
+  .info
+    .widgets
+
+      .status-widget
+        В работе
+        %span.caret
+
+      .dropdown-menu
+        %li Новый
+        %li Перезвонить
+        %li Назначена встреча
 
 
-= simple_form_for @lead, url: lead_path(@lead) do |f|
+      .widget
+        .row
+          .name
+            Телефон:
+          .value
+            = @lead.phone
+        .row
+          .name
+            E-mail:
+          .value
+            = @lead.email
+
+    .comments
+
+
+      .comment
+        .avatar
+        .body
+          .top
+            %span.name
+              Кирилл
+
+            %span.date
+              14 мая 2014,
+              16:35
+
+          .content
+            Позвонить ему послезавтра, в пятницу и поинтересоваться чего он там надумал.
+
+
+      .comment
+        .avatar
+        .body
+          .top
+            %span.name
+              Кирилл
+
+            %span.date
+              14 мая 2014,
+              16:32
+
+          .content
+            Позвонил лиду, он говорит, что хочет лендос, но пока не знает какой.
+            Вроде как у него три направления и он собираеатся вскоре определиться с наиболее приоритетным.
+
+
+
+
+
+
+
+-#%h1
+-#  = @lead.name
+-#
+-#= link_to 'Редактировать', edit_lead_path(@lead)
+-#= link_to 'Удалить', lead_path(@lead), method: :delete, confirm: 'Вы уверены?'
+-#
+-#
+-#= simple_form_for @lead, url: lead_path(@lead) do |f|
   = f.association :status
   = f.submit 'Изменить'
