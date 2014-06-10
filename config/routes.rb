@@ -2,6 +2,7 @@ Crm::Application.routes.draw do
  root 'leads#index'
 
   resources :leads do
+    get :change_status, on: :member
     resources :comments
   end
 

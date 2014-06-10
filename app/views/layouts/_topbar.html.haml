@@ -12,9 +12,13 @@
 
     .collapse.navbar-collapse
       %ul.nav.navbar-nav
-        %li{class: params[:controller] == 'visits' ? 'active' : ''}
+        %li{class: params[:controller] == 'leads' ? 'active' : ''}
           %a{href: leads_path}
             Клиенты
+
+        %li{class: params[:controller] == 'visits' ? 'active' : ''}
+          %a{href: statuses_path}
+            Статусы
 
       %form.navbar-form.navbar-right
         %a.btn.btn-success{href: new_lead_path}

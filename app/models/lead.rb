@@ -9,6 +9,11 @@ class Lead < ActiveRecord::Base
 
 
   def add_comment(comment)
-    comments.create comment
+    self.comments << comment
+  end
+
+  def change_status(status)
+    #@todo -  нужно проверить, можем ли сменить статус на этот
+    update_attributes(status_id: status.id)
   end
 end

@@ -1,3 +1,15 @@
-%h1 Редактировать клиента
+%ol.breadcrumb
+  %li
+    = link_to 'Клиенты', leads_path
+  %li
+    = link_to "(##{@lead.id}) #{@lead.name}", lead_path(@lead)
+  %li.active
+    редактировать
 
-= render partial: 'leads/form', locals: {lead: @lead, url: lead_path(@lead)}
+
+%legend Редактировать клиента
+
+
+.row
+  .col-md-6
+    = render partial: 'leads/form', locals: {lead: @lead, url: lead_path(@lead)}

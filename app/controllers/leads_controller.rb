@@ -1,7 +1,7 @@
 class LeadsController < ApplicationController
 
   before_filter :authenticate_user!
-  before_filter :find_lead, only: [:edit, :update, :destroy]
+  before_filter :find_lead, only: [:edit, :update, :change_status, :destroy]
 
 
   # GET /leads
@@ -40,6 +40,12 @@ class LeadsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def change_status
+    @status = Status.find params[:status_id]
+    @lead.change_status @status
+    redirect_to :back
   end
 
   def destroy

@@ -10,30 +10,31 @@
   .col-md-6
     %legend
       = @lead.name
+
     .panel.panel-default
-      .panel-heading
-        Возможные действия
       .panel-body
-        %a.btn.btn-primary{href: '#'} Редактировать
-        %a.btn.btn-danger{href: '#'} Удалить
+        = link_to 'Редактировать', edit_lead_path(@lead), class: [:btn, 'btn-primary', 'btn-sm']
+        = link_to 'Удалить', lead_path(@lead), method: :delete, confirm: 'Удалить?', class: [:btn, 'btn-danger', 'btn-sm']
         .btn-group
-          %button.btn.btn-default.dropdown-toggle{'data-toggle' => 'dropdown'}
+          %button.btn.btn-default.btn-sm.dropdown-toggle{'data-toggle' => 'dropdown'}
             Изменить статус
             %span.caret
           %ul.dropdown-menu
-            %li
-              %a{href: '#'} Новый
-            %li
-              %a{href: '#'} Перезвонить
+            - current_landing.statuses.each do |status|
+              %li
+                = link_to status.name, change_status_lead_path(@lead, status_id: status.id)
 
 
-
-        -#.btn-group
-          %button.btn.btn-default.dropdown-toggle{'data-toggle' => 'dropdown'}
-            Действия
-            %span.caret
+        %a.btn.btn-default.btn-sm{href: '#comment-modal', 'data-toggle' => 'modal'}
+          Добавить комментарий
 
     %table.table.table-striped
+      %tr
+        %td
+          Статус
+        %td
+          %span.label.label-danger
+            = @lead.status.name
       %tr
         %td
           Телефон
@@ -64,14 +65,17 @@
       Последние комментарии
 
     %ul.media-list
-      %li.media
-        .pull-left
-          %img.media-object{'data-src' => 'holder.js/64x64'}
-        .media-body
-          %h5.media-heading
-            Кирилл
-            %small 5 января в 14:00
-          ОЛОЛОЛО
+      - @lead.comments.order('id desc').each do |comment|
+        %li.media
+          .pull-left
+            %img.media-object{'data-src' => 'holder.js/64x64'}
+          .media-body
+            %h5.media-heading
+              = comment.user.name
+              %small
+                = l comment.created_at
+                = link_to 'удалить', root_path
+            = comment.content.gsub("\n", '<br />').html_safe
 
 
 
@@ -79,7 +83,22 @@
 
 
 
+.modal.fade#comment-modal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{type: :button, 'data-dismiss' => 'modal', tabindex: '-1', 'aria-hidden' => 'true'}
+          = '&times;'.html_safe
+        %h3
+          Добавить комментарий
+      = simple_form_for Comment.new, url: lead_comments_path(@lead), html: {class: 'form-vertical'} do |f|
 
+        .modal-body
+          = f.input :content, input_html: {rows: '5', style: 'width: 400px'}
+        .modal-footer
+          %a.btn{href: '#', 'data-dismiss' => 'modal', 'aria-hidden' => 'true'}
+            Отмена
+          = f.submit 'Добавить', class: ['btn', 'btn-success']
 
 
 

@@ -14,6 +14,8 @@ class ApplicationController < ActionController::Base
     Account.first
   end
 
+  helper_method :current_landing
+
   def not_found
     raise ActiveRecord::RecordNotFound.new('not found')
   end
