@@ -1,79 +1,95 @@
-.lead
-  .title
-    .name
+%ol.breadcrumb
+  %li
+    = link_to 'Клиенты', leads_path
+  %li.active
+    = "(##{@lead.id})"
+    = @lead.name
+
+
+.row
+  .col-md-6
+    %legend
       = @lead.name
-
-  .info
-    .widgets
-
-      .status-widget
-        В работе
-        %span.caret
-
-      .dropdown-menu
-        %li Новый
-        %li Перезвонить
-        %li Назначена встреча
-
-
-      .widget
-        .row
-          .name
-            Телефон:
-          .value
-            = @lead.phone
-        .row
-          .name
-            E-mail:
-          .value
-            = @lead.email
-
-    .comments
-
-
-      .comment
-        .avatar
-        .body
-          .top
-            %span.name
-              Кирилл
-
-            %span.date
-              14 мая 2014,
-              16:35
-
-          .content
-            Позвонить ему послезавтра, в пятницу и поинтересоваться чего он там надумал.
-
-
-      .comment
-        .avatar
-        .body
-          .top
-            %span.name
-              Кирилл
-
-            %span.date
-              14 мая 2014,
-              16:32
-
-          .content
-            Позвонил лиду, он говорит, что хочет лендос, но пока не знает какой.
-            Вроде как у него три направления и он собираеатся вскоре определиться с наиболее приоритетным.
+    .panel.panel-default
+      .panel-heading
+        Возможные действия
+      .panel-body
+        %a.btn.btn-primary{href: '#'} Редактировать
+        %a.btn.btn-danger{href: '#'} Удалить
+        .btn-group
+          %button.btn.btn-default.dropdown-toggle{'data-toggle' => 'dropdown'}
+            Изменить статус
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              %a{href: '#'} Новый
+            %li
+              %a{href: '#'} Перезвонить
 
 
 
+        -#.btn-group
+          %button.btn.btn-default.dropdown-toggle{'data-toggle' => 'dropdown'}
+            Действия
+            %span.caret
+
+    %table.table.table-striped
+      %tr
+        %td
+          Телефон
+        %td
+          = @lead.phone
+
+      %tr
+        %td
+          Email
+        %td
+          = @lead.email
+
+
+  .col-md-6
+    -#%h2
+      Комментарии
+
+    -#.panel.panel-default
+      .panel-heading
+        Добавить комментарий
+      .panel-body
+        %form
+          %textarea{cols: '75', rows: '5'}
+          %br
+          %button.btn.btn-success Добавить
+
+    %legend
+      Последние комментарии
+
+    %ul.media-list
+      %li.media
+        .pull-left
+          %img.media-object{'data-src' => 'holder.js/64x64'}
+        .media-body
+          %h5.media-heading
+            Кирилл
+            %small 5 января в 14:00
+          ОЛОЛОЛО
 
 
 
 
--#%h1
--#  = @lead.name
--#
--#= link_to 'Редактировать', edit_lead_path(@lead)
--#= link_to 'Удалить', lead_path(@lead), method: :delete, confirm: 'Вы уверены?'
--#
--#
--#= simple_form_for @lead, url: lead_path(@lead) do |f|
-  = f.association :status
-  = f.submit 'Изменить'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

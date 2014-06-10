@@ -13,7 +13,7 @@ gem 'sass-rails', '~> 4.0.0'
 
 gem 'haml-rails'
 
-gem 'simple_form'
+gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -32,6 +32,9 @@ gem 'simple_enum'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+
+gem 'bootstrap-sass', '~> 3.1.1'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'

@@ -1,12 +1,32 @@
-%h1
+%ol.breadcrumb
+  %li
+    %a{href: '#'} Настройки
+  %li.active
+    Статусы
+
+
+%legend
   Список статусов
 
-%table.table
-  %tbody
-    - @statuses.each do |status|
-      %tr
-        %td
-          = status.name
-        %td
-          = link_to 'изменить', edit_status_path(status)
-          = link_to 'удалить', status_path(status), method: :delete, confirm: 'Удалить статус?'
+.row
+  .col-md-6
+    %table.table.table-striped
+      %tbody
+        - @statuses.each do |status|
+          %tr
+            %td
+              = status.name
+            %td
+              -#
+                = link_to 'изменить', edit_status_path(status)
+                = link_to 'удалить', status_path(status), method: :delete, confirm: 'Удалить статус?'
+
+
+              %a.btn.btn-default{href: edit_status_path(status)}
+                %span.glyphicon.glyphicon-pencil
+
+              %a.btn.btn-default{href: '#'}
+                %span.glyphicon.glyphicon-arrow-up
+
+              %a.btn.btn-default{href: '#'}
+                %span.glyphicon.glyphicon-arrow-down
