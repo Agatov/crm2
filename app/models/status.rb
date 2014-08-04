@@ -1,4 +1,4 @@
 class Status < ActiveRecord::Base
   belongs_to :landing
-  has_many :leads
+  has_many :clients
 end

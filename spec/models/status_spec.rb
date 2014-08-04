@@ -7,6 +7,6 @@ describe Status do
   it { should respond_to(:is_service) }
 
   it { should respond_to(:landing) }
-  it { should respond_to(:leads) }
+  it { should respond_to(:clients) }
 
 end

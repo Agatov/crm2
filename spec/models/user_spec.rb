@@ -8,6 +8,6 @@ describe User do
   it { should respond_to(:avatar) }
 
   it { should respond_to(:account) }
-  it { should respond_to(:leads) }
+  it { should respond_to(:clients) }
   it { should respond_to(:comments) }
 end

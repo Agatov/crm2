@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build comment_params
 
     if @comment.save
-      @lead.add_comment @comment
+      @client.add_comment @comment
     end
 
     redirect_to :back
@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
   end
 
   def find_lead
-    @lead = Lead.find params[:lead_id]
+    @client = Client.find params[:lead_id]
   end
 
   def find_comment

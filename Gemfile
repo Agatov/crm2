@@ -35,6 +35,8 @@ gem 'simple_enum'
 
 
 gem 'bootstrap-sass', '~> 3.1.1'
+gem 'momentjs-rails', '~> 2.5.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 3.0.0'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
